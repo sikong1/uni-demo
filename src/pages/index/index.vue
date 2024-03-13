@@ -4,12 +4,24 @@
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
+    <view>
+      <uni-button @click="setStore">点击（测试持久化）</uni-button>
+    </view>
   </view>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import {usePmsStore} from '@/stores/demo'
+
 const title = ref('Hello')
+
+const setStore = () => {
+  usePmsStore().setInfo({
+    name: 'kkkk'
+  })
+  
+}
 </script>
 
 <style>
