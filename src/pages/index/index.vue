@@ -5,7 +5,7 @@
       <text class="title">{{ title }}</text>
     </view>
     <view>
-      <uni-button @click="setStore">点击（测试持久化）</uni-button>
+      <uv-button type="primary" @click="setStore">点击（测试持久化）</uv-button>
     </view>
   </view>
 </template>
