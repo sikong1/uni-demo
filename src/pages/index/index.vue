@@ -12,15 +12,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import {usePmsStore} from '@/stores/demo'
 
 const title = ref('Hello')
 
 const setStore = () => {
-  usePmsStore().setInfo({
-    name: 'kkkk'
-  })
-  
 }
 </script>
 

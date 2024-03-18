@@ -9,7 +9,25 @@
 		{
 			"path": "pages/login/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/not-find/index",
+			"style": {
+				"navigationBarTitleText": "404"
+			}
+		},
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/sign/index",
+			"style": {
+				"navigationBarTitleText": "注册"
 			}
 		}
 	],

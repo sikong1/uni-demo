@@ -22,13 +22,13 @@ export default defineConfig((mode: ConfigEnv) => {
       }),
     ],
     server: {
-      port: 8088,
+      port: 1234,
       hmr: true, // 启用热更新
       proxy: {
-        "/guopw": {
+        "/api": {
           target: env.VITE_PMS_APP_BASE_URL, // 目标服务器地址
           changeOrigin: true, // 是否修改请求头中的 Origin 字段
-          rewrite: (path) => path.replace(/^\/guopw/, ""),
+          rewrite: (path) => path.replace(/^\/api/, ""),
         },
       },
     },
