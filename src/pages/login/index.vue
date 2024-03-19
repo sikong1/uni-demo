@@ -53,15 +53,15 @@ import useStore from "@/pinia";
 import { loginIn } from "@/utils/login";
 
 const loginParsms = reactive({
-  username: "gpw",
-  password: "123456",
+  username: "",
+  password: "",
 });
 const formRef = ref<any>(null);
 const { user } = useStore();
 
 onMounted(() => {
-  // loginParsms.username = user.loginParams.username;
-  // loginParsms.password = user.loginParams.password;
+  loginParsms.username = user.loginParams.username;
+  loginParsms.password = user.loginParams.password;
   user.setLoginParams({
     username: "",
     password: "",
