@@ -64,6 +64,8 @@ import { generateRandomString } from "../../utils";
 import { aesEncrypt } from "../../utils/ase";
 import { register } from "@/server/modules/login";
 import useStore from "@/pinia";
+import { loginOut } from "@/utils/login";
+import { onShow } from "@dcloudio/uni-app";
 
 const signParsms = reactive({
   username: "",
@@ -71,7 +73,7 @@ const signParsms = reactive({
   newpassword: "",
 });
 const formRef = ref<any>(null);
-const { user } = useStore()
+const { user } = useStore();
 
 // 自定义校验规则
 const validatePass = (rule, value, callback) => {
@@ -113,6 +115,10 @@ const rules = {
   ],
 };
 
+onShow(() => {
+  loginOut();
+});
+
 // 提交
 const submit = () => {
   // 如果有错误，会在catch中返回报错信息数组，校验通过则在then中返回true
@@ -121,9 +127,7 @@ const submit = () => {
     .then((res) => {
       handleSign();
     })
-    .catch((errors) => {
-      
-    });
+    .catch((errors) => {});
 };
 
 const handleSign = async () => {
@@ -141,9 +145,9 @@ const handleSign = async () => {
   switch (data.status) {
     case 200:
       user.setLoginParams({
-         username: signParsms.username,
-         password: signParsms.password
-      })
+        username: signParsms.username,
+        password: signParsms.password,
+      });
       // 注册成功
       uni.showToast({
         icon: "success",

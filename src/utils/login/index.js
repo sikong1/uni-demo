@@ -76,15 +76,21 @@ export const loginInMessage = () => {
   });
 }
 
+export const whiteRouterArr = ['/pages/login/index', '/pages/sign/index']
 export const loginOut = () => {
   const now = new Date().getTime()
   resetTimer(type.loginOut)
+  console.log(now - timer.num, endTime, 'lll');
   if (now - timer.num > endTime) {
     timer.num = now
     // 保存当前路由
+    const routes = getCurrentPages(); // 获取当前打开过的页面路由数组
+    let curRoute = routes[routes.length - 1].route // 获取当前页面路由，也就是最后一个打开的页面路由
+    // 并且保存的路由不在白名单内
+    curRoute =  whiteRouterArr.includes(curRoute) ? undefined : curRoute
     setStore({
       name: redirectStore,
-      content: 'router.currentRoute.value.fullPath'
+      content: curRoute
     })
     removeStore({
       name: tokenStore
@@ -113,8 +119,9 @@ export const loginIn = (token) => {
     const redirect = getStore({
       name: redirectStore
     })
+  console.log('redirect',redirect);
     uni.navigateTo({
-      url: redirect ? redirect : '/pages/home/index',
+      url: redirect ? '/' + redirect : '/pages/home/index',
     });
   }
 }

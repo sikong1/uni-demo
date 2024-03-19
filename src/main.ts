@@ -2,6 +2,7 @@ import { createSSRApp } from "vue";
 import App from "./App.vue";
 import "uno.css";
 import { createPinia } from "pinia";
+import "./router";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import "./styles/index.scss";
 

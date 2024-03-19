@@ -50,7 +50,8 @@ import { generateRandomString } from "../../utils";
 import { aesEncrypt } from "../../utils/ase";
 import { login } from "@/server/modules/login";
 import useStore from "@/pinia";
-import { loginIn } from "@/utils/login";
+import { loginIn, loginOut } from "@/utils/login";
+import { onShow } from "@dcloudio/uni-app";
 
 const loginParsms = reactive({
   username: "",
@@ -59,9 +60,10 @@ const loginParsms = reactive({
 const formRef = ref<any>(null);
 const { user } = useStore();
 
-onMounted(() => {
-  loginParsms.username = user.loginParams.username;
-  loginParsms.password = user.loginParams.password;
+onLoad(() => {
+  // loginOut();
+  // loginParsms.username = user.loginParams.username;
+  // loginParsms.password = user.loginParams.password;
   user.setLoginParams({
     username: "",
     password: "",
@@ -97,9 +99,7 @@ const submit = () => {
     .then((res) => {
       handleLogin();
     })
-    .catch((errors) => {
-      
-    });
+    .catch((errors) => {});
 };
 
 const handleLogin = async () => {

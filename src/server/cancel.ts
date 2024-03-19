@@ -1,6 +1,4 @@
-import { RequestTask } from './type'
-
-const cancelerMap = new Map<string, RequestTask>()
+const cancelerMap = new Map<string, any>()
 
 export class RequestCancel {
     private static instance?: RequestCancel
@@ -8,7 +6,7 @@ export class RequestCancel {
     static createInstance() {
         return this.instance ?? (this.instance = new RequestCancel())
     }
-    add(url: string, requestTask: RequestTask) {
+    add(url: string, requestTask: any) {
         this.remove(url)
         if (cancelerMap.has(url)) {
             cancelerMap.delete(url)
