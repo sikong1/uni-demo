@@ -64,8 +64,6 @@ import { generateRandomString } from "../../utils";
 import { aesEncrypt } from "../../utils/ase";
 import { register } from "@/server/modules/login";
 import useStore from "@/pinia";
-import { loginOut } from "@/utils/login";
-import { onShow } from "@dcloudio/uni-app";
 
 const signParsms = reactive({
   username: "",
@@ -114,10 +112,6 @@ const rules = {
     { validator: validatePass, trigger: "blur" },
   ],
 };
-
-onShow(() => {
-  loginOut();
-});
 
 // 提交
 const submit = () => {
