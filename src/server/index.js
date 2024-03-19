@@ -40,7 +40,7 @@ const requestHooks = {
     return options;
   },
   async responseInterceptorsHook(response) {
-    const { statusCode, data } = response;
+    const { statusCode } = response;
     switch (statusCode) {
       case 400:
         uni.showToast({
@@ -71,7 +71,7 @@ const requestHooks = {
         });
         break
     }
-    return data;
+    return response;
   },
   async responseInterceptorsCatchHook(options, error) {
     if (options.method?.toUpperCase() == 'POST') {
