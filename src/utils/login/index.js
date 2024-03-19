@@ -44,7 +44,7 @@ export const loginOut401Message = () => {
   if (now - timer.num > endTime) {
     timer.num = now
     uni.showToast({
-      icon: "warning",
+      icon: "error",
       title: "无权限，请重新登录",
     });
     clearLoginInfo()

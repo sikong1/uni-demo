@@ -2,8 +2,7 @@
 import request from '../index.js'
 
 export const getData = () => {
-  return request({
+  return request.get({
     url: '/chat/getData',
-    method: 'get',
   });
 }

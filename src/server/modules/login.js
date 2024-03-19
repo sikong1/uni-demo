@@ -1,23 +1,26 @@
 
-import request from '../index.js'
+import request from '../index'
 
 export const getApi = () => {
-  return request({
+  return request.get({
     url: '/portfolio',
-    method: 'get',
   });
 }
 export const login = (data) => {
-  return request({
-    url: '/login',
-    method: 'post',
-    data,
-  });
+  return request.post(
+    {
+      url: "/api/login",
+      data,
+    },
+    { withToken: false }
+  );
 }
 export const register = (data) => {
-  return request({
-    url: '/register',
-    method: 'post',
-    data,
-  });
+  return request.post(
+    {
+      url: "/api/register",
+      data,
+    },
+    { withToken: false }
+  );
 }
